@@ -1,0 +1,33 @@
+name: CMake Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Conan
+        run: pip install conan
+
+      - name: Configure Conan
+        run: conan profile detect --force
+
+      - name: Run build script
+        run: python kvs_build.py Release --build_tests --enable_logs
+
+      - name: Run ctest
+        run: ctest --output-on-failure -C Release -VV
+        working-directory: ${{ github.workspace }}/kvs_release
