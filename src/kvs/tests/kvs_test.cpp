@@ -14,7 +14,9 @@ namespace {
 			return _startedTimeSeconds;
 		}
 	private:
-		inline static int64_t _startedTimeSeconds = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
+		inline static int64_t _startedTimeSeconds = 
+            std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now().time_since_epoch())
+            .count();
 	};
 
 
