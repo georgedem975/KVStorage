@@ -21,7 +21,7 @@ namespace {
     using KV = kvs::KVStorage<Clock>;
 }
 
-// Проверяет корректное увеличение времени и работу метода now() класса Clock
+// РџСЂРѕРІРµСЂСЏРµС‚ РєРѕСЂСЂРµРєС‚РЅРѕРµ СѓРІРµР»РёС‡РµРЅРёРµ РІСЂРµРјРµРЅРё Рё СЂР°Р±РѕС‚Сѓ РјРµС‚РѕРґР° now() РєР»Р°СЃСЃР° Clock
 TEST(ClockTest, IncreaseTimeWorks) {
     Clock clock;
 
@@ -41,7 +41,7 @@ TEST(ClockTest, IncreaseTimeWorks) {
     ASSERT_EQ(clock.now(), timeAfterSecondIncrease);
 }
 
-// Проверяет корректность работы методов set и get, класса kvs::KVStorage
+// РџСЂРѕРІРµСЂСЏРµС‚ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹ РјРµС‚РѕРґРѕРІ set Рё get, РєР»Р°СЃСЃР° kvs::KVStorage
 TEST(KVStorageTest, SetAndGet) {
     Clock testClock;
     KV storage({}, testClock);
@@ -58,7 +58,7 @@ TEST(KVStorageTest, SetAndGet) {
     EXPECT_EQ(retrievedValue.value(), value);
 }
 
-// Проверяет корректность работы метода set при перезаписи
+// РџСЂРѕРІРµСЂСЏРµС‚ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹ РјРµС‚РѕРґР° set РїСЂРё РїРµСЂРµР·Р°РїРёСЃРё
 TEST(KVStorageTest, OverwriteValue) {
     Clock testClock;
     KV storage({}, testClock);
@@ -79,7 +79,7 @@ TEST(KVStorageTest, OverwriteValue) {
 }
 
 
-// Проверяет корректность работы метода remove при удалении существующего ключа
+// РџСЂРѕРІРµСЂСЏРµС‚ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹ РјРµС‚РѕРґР° remove РїСЂРё СѓРґР°Р»РµРЅРёРё СЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРіРѕ РєР»СЋС‡Р°
 TEST(KVStorageTest, RemoveExistingKey) {
     Clock testClock;
     KV storage({}, testClock);
@@ -94,7 +94,7 @@ TEST(KVStorageTest, RemoveExistingKey) {
     EXPECT_FALSE(storage.get(key).has_value());
 }
 
-// Проверяет корректность работы метода remove при удалении несуществующего ключа
+// РџСЂРѕРІРµСЂСЏРµС‚ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹ РјРµС‚РѕРґР° remove РїСЂРё СѓРґР°Р»РµРЅРёРё РЅРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРіРѕ РєР»СЋС‡Р°
 TEST(KVStorageTest, RemoveNonExistingKey) {
     Clock testClock;
     KV storage({}, testClock);
@@ -104,7 +104,7 @@ TEST(KVStorageTest, RemoveNonExistingKey) {
     EXPECT_FALSE(storage.remove(nonExistingKey));
 }
 
-// Проверяет корректность работы механизма истечения времени класса kvs::KVStorage
+// РџСЂРѕРІРµСЂСЏРµС‚ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹ РјРµС…Р°РЅРёР·РјР° РёСЃС‚РµС‡РµРЅРёСЏ РІСЂРµРјРµРЅРё РєР»Р°СЃСЃР° kvs::KVStorage
 TEST(KVStorageTest, Expiration) {
     Clock testClock;
     KV storage({}, testClock);
@@ -122,7 +122,7 @@ TEST(KVStorageTest, Expiration) {
     EXPECT_FALSE(result.has_value());
 }
 
-// Проверяет корректность работы механизма истечения времени класса kvs::KVStorage, при бессконечных значениях
+// РџСЂРѕРІРµСЂСЏРµС‚ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹ РјРµС…Р°РЅРёР·РјР° РёСЃС‚РµС‡РµРЅРёСЏ РІСЂРµРјРµРЅРё РєР»Р°СЃСЃР° kvs::KVStorage, РїСЂРё Р±РµСЃСЃРєРѕРЅРµС‡РЅС‹С… Р·РЅР°С‡РµРЅРёСЏС…
 TEST(KVStorageTest, NoExpirationTTLZero) {
     Clock testClock;
     KV storage({}, testClock);
@@ -140,8 +140,7 @@ TEST(KVStorageTest, NoExpirationTTLZero) {
     EXPECT_EQ(result.value(), value);
 }
 
-
-// Проверяет корректность работы метода getManySorted
+// РџСЂРѕРІРµСЂСЏРµС‚ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹ РјРµС‚РѕРґР° getManySorted
 TEST(KVStorageTest, GetManySorted) {
     Clock testClock;
     KV storage({}, testClock);
@@ -161,7 +160,7 @@ TEST(KVStorageTest, GetManySorted) {
     EXPECT_EQ(results[1].second, "val4");
 }
 
-// Проверяет корректность работы метода removeOneExpiredEntry
+// РџСЂРѕРІРµСЂСЏРµС‚ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹ РјРµС‚РѕРґР° removeOneExpiredEntry
 TEST(KVStorageTest, RemoveOneExpiredEntry) {
     Clock testClock;
     KV storage({}, testClock);
